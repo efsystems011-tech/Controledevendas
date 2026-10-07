@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Controle de Contas</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+   <div class="app">
+
+    <!-- MENU LATERAL? -->
+
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            💰
+            <span>Controle de Contas</span>
+        </div>
+
+        <nav>
+            <a href="dashboard.html" class="active">
+                🏠
+                <span>Dashboard</span>
+            </a>
+
+            <a href="clientes.html">
+                👥
+                <span>Clientes</span>
+            </a>
+
+            <a href="nova-venda.html">
+                🛒
+                <span>Nova Venda</span>
+            </a>
+
+            <a href="#">
+                💳
+                <span>Parcelas</span>
+            </a>
+
+            <a href="#">
+                📊
+                <span>Relatórios</span>
+            </a>
+        </nav>
+
+        <button id="logoutButton" class="logout">
+            🚪Sair
+        </button>
+    </aside>
+
+    <!-- CONTEÚDO -->
+     <main class="main-content">
+        <header class="topbar">
+            <div>
+                <h1>Dashboard</h1>
+
+                <p>Visão geral das suas contas</p>
+            </div>
+
+            <div class="user-info">
+                <div class="user-avatar">
+                    A
+                </div>
+
+                <div>
+                    <strong>Administrador</strong>
+                    <small>Usuário</small>
+                </div>
+            </div>
+        </header>
+
+        <!-- CARDS -->
+         <section class="cards">
+            <div class="card">
+                <div class="card-icon blue">
+                    💰
+                </div>
+
+                <div>
+                    <span>Total a receber</span>
+
+                    <strong id="totalReceber">
+                        R$ 0,00
+                    </strong>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-icon green">
+                    💵
+                </div>
+
+                <div>
+                    <span>Total recebido</span>
+
+                    <strong id="totalRecebido">
+                        R$ 0,00
+                    </strong>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-icon orange">
+                    📅
+                </div>
+
+                <div>
+                    <span>
+                        Contas pendentes
+                    </span>
+
+                    <strong id="contasPendentes">
+                        0
+                    </strong>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-icon red">
+                    ⚠️
+                </div>
+
+                <div>
+                    <span>
+                        Contas atrasadas
+                    </span>
+
+                    <strong id="contasAtrasadas">
+                        0
+                    </strong>
+                </div>
+            </div>
+         </section>
+
+         <!-- AÇÕES RÁPIDAS -->
+
+         <section class="quick-actions">
+            <h2>Ações rápidas</h2>
+
+            <div class="actions">
+                <a href="nova-venda.html" class="action-button">
+                    ➕ Nova venda
+                </a>
+
+                <a href="clientes.html" class="action-button secondary">
+                    👤 Novo cliente
+                </a>
+            </div>
+         </section>
+
+         <!-- VENDAS -->
+
+         <section class="recent-section">
+            <div class="section-header">
+
+                <div>
+                    <h2>Vendas recentes</h2>
+                    <p>Últimas vendas cadastradas</p>
+                </div>
+
+                <a href="nova-venda.html">
+                    + Nova venda
+                </a>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Cliente</th>
+                            <th>Produto</th>
+                            <th>Valor</th>
+                            <th>Parcelas</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody class="vendasTables">
+                        <tr>
+                            <td colspan="5" class="empty">
+                                Nenhuma venda cadastrada
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+         </section>
+     </main>
+   </div>
+
+   <script src="js/dashboard.js"></script>
+</body>
+</html>

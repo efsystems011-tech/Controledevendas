@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes | Controle de Contas</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/clientes.css">
+</head>
+<body>
+    <div class="app">
+        <!-- MENU -->
+
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                💰
+                Controle de Contas
+            </div>
+
+            <nav>
+                <a href="dashboard.html">
+                    🏠
+                    <span>Dashboard</span>
+                </a>
+                <a href="clientes.html">
+                    👥
+                    <span>Clientes</span>
+                </a>
+
+                <a href="nova-venda.html">
+                    🛒
+                    <span>Nova Venda</span>
+                </a>
+
+                <a href="#">
+                    💳
+                    <span>Parcelas</span>
+                </a>
+
+                <a href="#">
+                    📊
+                    <span>Relatórios</span>
+                </a>
+            </nav>
+
+            <button
+                id="logoutButton"
+                class="logout"
+            >
+                🚪 Sair
+            </button>
+        </aside>
+
+        <!-- CONTEÚDO -->
+        <main class="main-content">
+            <header class="topbar">
+                <div>
+                    <h1>Clientes</h1>
+
+                    <p>
+                        Cadastre e gerencie as pessoas que compram seus produtos.
+                    </p>
+                </div>
+
+                <div class="user-info">
+                    <div class="user-avatar">
+                        A
+                    </div>
+
+                    <div>
+                        <strong>Administrador</strong>
+                        <small>Usuário</small>
+                    </div>
+                </div>
+            </header>
+
+            <!-- FORMULÁRIO -->
+             <section class="form-card">
+                <div class="section-title">
+                    <div>
+                        <h2>
+                            Novo Cliente
+                        </h2>
+
+                        <p>Preencha os dados abaixo para cadastrar uma pessoa.</p>
+                    </div>
+                </div>
+
+                <form id="clienteForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="nome">
+                                Nome *
+                            </label>
+
+                            <input  type="text" id="nome"
+                            placeholder="Ex.: João da Silva"
+                            required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="telefone">
+                                Telefone
+                            </label>
+
+                            <input type="tel" id="telefone"
+                            placeholder="(00) 00000-0000"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cpf">
+                                CPF
+                            </label>
+                            <input type="text" id="cpf"
+                            placeholder="000.000.000-00"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="observacoes">
+                                Observações
+                            </label>
+
+                            <input
+                                type="text"
+                                id="observacoes"
+                                placeholder="Alguma observação..."
+                            />
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button class="btn-secondary"
+                        type="reset"
+                        >
+                            Limpar
+                        </button>
+
+                        <button
+                            type="submit"
+                            class="btn-primary"
+                        >
+                            + Cadastrar cliente
+                        </button>
+                    </div>
+
+                    <p id="clienteMessage"></p>
+                </form>
+             </section>
+
+             <!-- LISTA -->
+              <section class="clients-section">
+
+                <div class="section-header">
+                    <div>
+                        <h2>Cliente  cadastrado</h2>
+
+                        <p>Total: 
+                            <strong id="totalClientes">0</strong>
+                        </p>
+                    </div>
+
+                    <div class="search-box">
+                        🔎
+                        <input 
+                            type="text"  
+                            id="pesquisa"
+                            placeholder="Pesquisar cliente..."
+                        >
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Telefone</th>
+                                <th>CPF</th>
+                                <th>Observações</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="clientesTable"></tbody>
+                    </table>
+                </div>
+              </section>
+        </main>
+    </div>
+
+    <script src="js/clientes.js"></script>
+</body>
+</html>
