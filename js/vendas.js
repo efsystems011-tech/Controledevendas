@@ -91,11 +91,15 @@ function formatarData(data) {
 
 // ======================== CALCULAR PARCELAS
 function calcularParcelas() {
-    const valor = Number(valorInput.value);
-    const quantidade = Number(quantidadeParcelas.value);
-    const data = Number(quantidadeParcelas.value);
 
-    if(!valor || valor <= 0) {
+    const valor = Number(valorInput.value);
+
+    const quantidade = Number(quantidadeParcelas.value);
+
+    const data = primeiroVencimento.value;
+
+    if (!valor || valor <= 0) {
+        
         valorParcela.textContent = "R$ 0,00";
 
         resumoValor.textContent = "R$ 0,00";
@@ -205,6 +209,92 @@ vendaForm.addEventListener(
 
         const dataInicial = primeiroVencimento.value;
 
-        
+        const parcelas = [];
+
+        const valorBaseCentavos = Math.floor((valor * 100) / quantidade);
+
+        const totalCentavos = Math.round(valor * 100);
+
+        const difereca = totalCentavos - (valorBaseCentavos * quantidade);
+
+        for(
+            let i =0;
+            i < quantidade;
+            i++
+        ) {
+            let valorCentavos = valorBaseCentavos;
+
+            if (i === quantidade - 1) {
+                valorCentavos += difereca;
+            }
+
+            const vencimento = adicionarMeses(
+                dataInicial,
+                i
+            );
+
+            parcelas.push({
+                id: 
+                    Date.now().toString()
+                    + "-"
+                    + i,
+
+                    numero: i + 1,
+
+                    valor: valorCentavos / 100,
+
+                    vencimento: 
+                        vencimento
+                            .toISOString()
+                            .split("T")[0],
+                        
+                    status: "pendente",
+
+                    dataPagamento: null
+
+
+            });
+        }
+
+        const novaVenda = {
+            id: Date.now().toString(),
+            clientId: cliente.id,
+            produto: produtoInput.value.trim(),
+            valor: valor,
+            quantidadeParcelas: quantidade,
+            dataVenda: new Date().toISOString(),
+            parcelas: parcelas
+        };
+
+        vendas.push(novaVenda);
+
+        localStorage.setItem(
+            "vendas",
+            JSON.stringify(vendas)
+        );
+
+        vendaMessage.textContent = "Venda registrada com sucesso!";
+
+        vendaMessage.style.color = "green";
+
+        vendaForm.reset();
+
+        calcularParcelas();
+
+        setTimeout(() => {
+            vendaMessage.textContent = "";
+        }, 3000);
+
     }
-)
+);
+
+// =================== LOGOUT 
+logoutButton.addEventListener(
+    "click", function() {
+        if(confirm(
+            "Deseja realmente sair do sistema?"
+        )) {
+            window.location.href = "index.html";
+        }
+    }
+);
